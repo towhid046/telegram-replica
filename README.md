@@ -1,8 +1,12 @@
-# React + Vite
+## Site Name: Chat Application (Telegram clone)
+### Live Link: https://telegram-replica-three.vercel.app
+### Video Demonstration: 
+**NB: Please use earphones to get better sound quality
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a fully responsvie telegram app design clone with some front end functionalities.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Packages Used for This Website
+- **[React](https://github.com/facebook/react)**: v18.2.0
+- **[Tailwind CSS](https://tailwindcss.com)**: v10.11.1
+- **[DaisyUI](https://daisyui.com)**: 4.12.10
+- **[React-icons](https://github.com/react-icons/react-icons)**: v5.2.1
