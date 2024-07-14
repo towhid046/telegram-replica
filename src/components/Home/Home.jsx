@@ -15,6 +15,7 @@ const Home = () => {
   const [targetedUser, setTargetedUser] = useState({});
   const [isToggle, setIsToggle] = useState(false);
   const [isChatShow, setIsChatShow] = useState(false);
+  
 
   useEffect(() => {
     const loadData = async () => {

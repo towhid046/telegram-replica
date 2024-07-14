@@ -17,7 +17,7 @@ const Tabs = () => {
 
   return (
     <div className="w-full">
-      <div className="flex space-x-4 border-b border-black">
+      <div className="flex space-x-4 border-b border-black justify-center">
         {tabs.map((tab, index) => (
           <Tab
             key={index}
