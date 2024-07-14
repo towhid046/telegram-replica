@@ -10,6 +10,7 @@ import { CiBookmark } from "react-icons/ci";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LuUserPlus } from "react-icons/lu";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { CiDark } from "react-icons/ci";
 
 const menuList = [
   { id: 11, icon: <FaRegUserCircle />, title: "My Profile" },
@@ -24,34 +25,38 @@ const menuList = [
 ];
 
 import PropTypes from "prop-types";
-const Menu = ({ setIsShowUserInfo }) => {
+const Menu = ({ setIsShowUserInfo, theme, setTheme }) => {
   return (
-    <nav className="flex h-[100vh] w-full absolute top-0 left-0 ">
-      <div className="w-[85%] bg-[#1C242F]">
-        <div className="pt-7 p-4 bg-[#233040] space-y-5">
+    <nav className="flex h-[100vh] w-full absolute top-0 left-0 md:hidden ">
+      <div className={`w-[85%] ${theme ?  'bg-gray-100 text-gray-800' : 'bg-[#1C242F] text-white'}`}>
+        <div className={`pt-7 p-4 ${theme? 'bg-white' : 'bg-[#233040]'} space-y-5`}>
           <div className="flex justify-between">
             <div
-              className={`bg-[#56A7F1] flex items-center justify-center text-white w-14 h-14  rounded-full shadow-sm`}
+              className={`bg-[#56A7F1] flex items-center justify-center ${theme ? 'text-white' : 'text-[#1C242F]'} w-14 h-14  rounded-full shadow-sm`}
             >
-              <span className="uppercase text-md font-bold">U</span>
+              <span className="uppercase text-lg font-bold">T</span>
             </div>
-            <button>
-              <MdLightMode className="text-xl text-white" />
+            <button onClick={() => setTheme(!theme)}>
+              {theme ? (
+                <CiDark className="text-2xl " />
+              ) : (
+                <MdLightMode className="text-2xl" />
+              )}
             </button>
           </div>
 
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-white font-semibold">Towhid</h2>
+              <h2 className=" font-semibold">Towhid</h2>
               <p className="text-[#AAA]">+8801928182891</p>
             </div>
             <button>
-              <IoIosArrowDown className="text-xl text-white" />
+              <IoIosArrowDown className="text-xl" />
             </button>
           </div>
         </div>
 
-        <ul className="text-white p-4 space-y-3.5">
+        <ul className=" p-4 space-y-3.5">
           {menuList.map((list) => (
             <button
               key={list.id}
@@ -73,6 +78,8 @@ const Menu = ({ setIsShowUserInfo }) => {
 
 Menu.propTypes = {
   setIsShowUserInfo: PropTypes.func,
+  setTheme: PropTypes.func,
+  theme: PropTypes.bool,
 };
 
 export default Menu;

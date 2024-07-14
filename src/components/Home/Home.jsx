@@ -1,4 +1,5 @@
 import bannerBg from "../../assets/images/chat-background.png";
+import bannerBgLight from "../../assets/images/light-background.jpeg";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -15,7 +16,7 @@ const Home = () => {
   const [targetedUser, setTargetedUser] = useState({});
   const [isToggle, setIsToggle] = useState(false);
   const [isChatShow, setIsChatShow] = useState(false);
-  
+  const [theme, setTheme] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -90,10 +91,17 @@ const Home = () => {
 
         {/* for mobile devices start*/}
         <aside
-          className={`col-span-1 bg-[#212121]  h-screen overflow-y-auto
+          className={`col-span-1 ${
+            theme ? "bg-white text-gray-800" : "bg-[#212121] "
+          } h-screen overflow-y-auto
             ${isChatShow ? "hidden" : "block"}`}
         >
-          <Navbar setIsToggle={setIsToggle} isToggle={isToggle} />
+          <Navbar
+            setIsToggle={setIsToggle}
+            isToggle={isToggle}
+            setTheme={setTheme}
+            theme={theme}
+          />
           {isToggle ? (
             <Tabs />
           ) : (
@@ -101,6 +109,7 @@ const Home = () => {
               users={users}
               handleUserChat={handleUserChat}
               targetedUserIndex={targetedUser?.index}
+              theme={theme}
             />
           )}
         </aside>
@@ -109,12 +118,15 @@ const Home = () => {
           className={`lg:col-span-2 md:hidden  md:col-span-1 bg-cover bg-center bg-no-repeat 
             ${isChatShow ? "block" : " hidden"}
             `}
-          style={{ backgroundImage: `url(${bannerBg})` }}
+          style={{
+            backgroundImage: `url(${theme ? bannerBgLight : bannerBg})`,
+          }}
         >
           <ChatsContainer
             setIsChatShow={setIsChatShow}
             chats={chats}
             targetedUser={targetedUser}
+            theme={theme}
           />
         </div>
 

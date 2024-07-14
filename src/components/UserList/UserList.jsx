@@ -1,6 +1,6 @@
 import PropTypes, { object } from "prop-types";
 import { RiPencilFill } from "react-icons/ri";
-const UserList = ({ users, handleUserChat, targetedUserIndex }) => {
+const UserList = ({ users, handleUserChat, targetedUserIndex, theme }) => {
   return (
     <ul className="px-2">
       {users?.map((user, index) => (
@@ -14,9 +14,13 @@ const UserList = ({ users, handleUserChat, targetedUserIndex }) => {
               user.updated_at
             )
           }
-          className={`flex justify-between items-start cursor-pointer   transition duration-300 px-4 rounded-lg py-2 ${
-            targetedUserIndex === index ? "bg-[#8774E1]" : "hover:bg-[#2b2b2b]"
-          }`}
+          className={`flex justify-between items-start cursor-pointer transition duration-300 px-4 rounded-lg py-2 ${
+            targetedUserIndex === index && "bg-[#8774E1]"
+          }
+            hover:bg-[#2B2B2B]
+            ${theme ? "hover:bg-[#F3F3F4]" : "hover:bg-[#2B2B2B]"}
+          
+          `}
         >
           <div className="flex items-center gap-2.5">
             <div
@@ -35,7 +39,11 @@ const UserList = ({ users, handleUserChat, targetedUserIndex }) => {
               )}
             </div>
             <div>
-              <h2 className="text-white">
+              <h2
+                className={`${targetedUserIndex === index && "text-white "}
+                ${theme ? "text-gray-800" : "text-white"}
+                `}
+              >
                 <b>{user?.creator?.name || "Unknown"}</b>
               </h2>
               <p

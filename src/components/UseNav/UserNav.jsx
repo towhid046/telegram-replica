@@ -5,11 +5,15 @@ import { FiArrowLeft } from "react-icons/fi";
 import { formatTime } from "../../utilities/formateTime/formateTime";
 import PropTypes from "prop-types";
 
-const UserNav = ({ targetedUser, setIsChatShow }) => {
+const UserNav = ({ targetedUser, setIsChatShow, theme }) => {
   const { name, index, lastUpdateAt } = targetedUser;
 
   return (
-    <nav className="flex justify-between shadow-sm py-2 md:px-5 px-2 items-center gap-5 sticky top-0 bg-[#212121] md:ml-0.5 ">
+    <nav
+      className={`flex justify-between shadow-sm py-2 md:px-5 px-2 items-center gap-5 sticky top-0 ${
+        theme ? "bg-white" : "bg-[#212121]"
+      } md:ml-0.5 `}
+    >
       <div className="flex items-center md:gap-3 gap-2 cursor-pointer ">
         <div className="md:hidden">
           <button
@@ -31,7 +35,9 @@ const UserNav = ({ targetedUser, setIsChatShow }) => {
           }${name?.split("")[name.length - 1]}`}</span>
         </div>
         <div>
-          <h2 className="text-white text-[15px]">
+          <h2
+            className={`${theme ? "text-gray-800" : "text-white"} text-[15px]`}
+          >
             <b>{name}</b>
           </h2>
           <p className="text-[#AAAAAA] text-[14px]">{`Last update at ${formatTime(
@@ -57,6 +63,7 @@ const UserNav = ({ targetedUser, setIsChatShow }) => {
 UserNav.propTypes = {
   targetedUser: PropTypes.object.isRequired,
   setIsChatShow: PropTypes.func,
+  theme: PropTypes.bool,
 };
 
 export default UserNav;
